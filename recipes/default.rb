@@ -17,14 +17,14 @@ package value_for_platform_family(
 
 case node.platform_family
 when 'debian', 'fedora', 'pld', 'rhel'
-  include_recipe "timezone-ii::#{node.platform_family}"
+  include_recipe "timezone-ii::#{node['platform_family']}"
 
 else
   if node.os == "linux"
     # Load the generic Linux recipe if there's no better known way to change the
     # timezone.  Log a warning (unless this is known to be the best way on a
     # particular platform).
-    message = "Linux platform '#{node.platform}' is unknown to this recipe; " +
+    message = "Linux platform '#{node['platform']}' is unknown to this recipe; " +
               "using generic Linux method"
     log message do
       level :warn
@@ -35,7 +35,7 @@ else
 
   else
     message = "Don't know how to configure timezone for " +
-              "'#{node.platform_family}'!"
+              "'#{node['platform_family']}'!"
     log message do
       level :error
     end

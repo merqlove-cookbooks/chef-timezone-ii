@@ -21,7 +21,7 @@ end
 link "localtime" do
   owner 'root'
   target_file '/etc/localtime'
-  to "/usr/share/zoneinfo/#{node[:tz]}"
+  to "/usr/share/zoneinfo/#{node['tz']}"
   action :nothing
 end
 

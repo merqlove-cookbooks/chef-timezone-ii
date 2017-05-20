@@ -11,7 +11,7 @@
 
 bash 'timedatectl set-timezone' do
   user 'root'
-  code "/usr/bin/timedatectl --no-ask-password set-timezone #{node.tz}"
+  code "/usr/bin/timedatectl --no-ask-password set-timezone #{node['tz']}"
 end
 
 # vim:ts=2:sw=2:
