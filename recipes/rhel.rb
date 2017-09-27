@@ -15,7 +15,7 @@ template "/etc/sysconfig/clock" do
   owner 'root'
   group 'root'
   mode 0644
-  notifies(:run, 'bash[tzdata-update]') unless el_version == 7
+  notifies(:run, 'execute[tzdata-update]') unless el_version == 7
   notifies(:create, 'link[localtime]') if el_version == 7
 end
 
